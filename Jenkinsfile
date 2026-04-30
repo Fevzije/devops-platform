@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('DEBUG') {
             steps {
-                echo 'Checkout completed'
+                sh 'pwd'
+                sh 'ls -la'
             }
         }
 
@@ -18,12 +19,8 @@ pipeline {
             steps {
                 sh 'docker build -t devops-worker ./worker'
             }
+          }
         }
-
-        stage('Test Compose Config') {
-            steps {
-                sh 'docker compose config'
-            }
         }
     }
 }
